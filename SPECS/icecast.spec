@@ -1,7 +1,7 @@
 Name:		icecast
 Version:	%{ver}%{sufix}
 Release:	%{rel}%{?dist}
-Summary:	Xiph Streaming media server that supports multiple audio formats. KH-Build7
+Summary:	Xiph Streaming media server that supports multiple audio formats.
 
 Group:		Applications/Multimedia
 License:	GPL

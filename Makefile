@@ -17,6 +17,6 @@ build: clean
 	--define "sufix ${SUFIX}" \
 	--define "rel ${RELEASE}" \
 	--define "_topdir %(pwd)/rpmbuild" \
-    --define "_builddir %{_topdir}" \
-    --define "_rpmdir %{_topdir}" \
-    --define "_srcrpmdir %{_topdir}" \
+	--define "_builddir %{_topdir}" \
+	--define "_rpmdir %{_topdir}" \
+	--define "_srcrpmdir %{_topdir}" \
