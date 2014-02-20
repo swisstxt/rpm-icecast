@@ -35,7 +35,7 @@ easily and supports open standards for commuincation and interaction.
 rm -rf %{name}
 git clone %{git_repo} %{name}
 cd %{name}
-git checkout icecast-%{ver}
+git checkout icecast-%{ver}-%{rel}
 
 %build
 cd %{name}
