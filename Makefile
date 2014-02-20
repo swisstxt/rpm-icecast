@@ -1,6 +1,7 @@
 HOME=$(shell pwd)
 VERSION="2.3.3"
-RELEASE="kh10"
+SUFIX="kh10"
+RELEASE="1"
 
 all: build
 
@@ -13,6 +14,7 @@ build: clean
 	cp -r ./SOURCES/* ./rpmbuild/SOURCES/
 	rpmbuild -ba SPECS/icecast.spec \
 	--define "ver ${VERSION}" \
+	--define "sufix ${SUFIX}" \
 	--define "rel ${RELEASE}" \
 	--define "_topdir %(pwd)/rpmbuild" \
     --define "_builddir %{_topdir}" \

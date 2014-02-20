@@ -1,5 +1,5 @@
 Name:		icecast
-Version:	%{ver}
+Version:	%{ver}%{sufix}
 Release:	%{rel}%{?dist}
 Summary:	Xiph Streaming media server that supports multiple audio formats. KH-Build7
 
@@ -35,7 +35,7 @@ easily and supports open standards for commuincation and interaction.
 rm -rf %{name}
 git clone %{git_repo} %{name}
 cd %{name}
-git checkout icecast-%{ver}-%{rel}
+git checkout icecast-%{ver}-%{sufix}
 
 %build
 cd %{name}
