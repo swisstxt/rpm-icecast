@@ -8,4 +8,4 @@ Usage:
 
     git clone https://github.com/swisstxt/rpm-icecast.git
     cd rpm-icecast
-    make VERSION=2.3.3 SUFIX=kh10 RELEASE=1
+    make VERSION=2.3.3 SUFIX=kh11 RELEASE=1
