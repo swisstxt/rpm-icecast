@@ -1,7 +1,7 @@
 HOME=$(shell pwd)
 VERSION="2.3.3"
 SUFIX="kh11"
-RELEASE="1"
+RELEASE="2"
 
 all: build
 

@@ -55,6 +55,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %config(noreplace) /etc/%{name}.xml
+%config(noreplace) %{_prefix}/share/icecast/admin/*
+%config(noreplace) %{_prefix}/share/icecast/web/*
 %{_bindir}/icecast
 %{_prefix}/share/icecast/*
 
