@@ -24,3 +24,6 @@ build: clean
 	--define "_builddir %{_topdir}" \
 	--define "_rpmdir %{_topdir}" \
 	--define "_srcrpmdir %{_topdir}" \
+
+publish:
+	/opt/buildhelper/buildhelper pushrpm yum-01.stxt.media.int:8080/swisstxt-centos
