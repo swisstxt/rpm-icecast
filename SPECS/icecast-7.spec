@@ -24,7 +24,6 @@ BuildRequires:	libxml2-devel
 Requires:       libxslt
 BuildRequires:	libxslt-devel
 
-#%define git_repo  https://github.com/karlheyes/icecast-kh.git
 %define systemd_dest /usr/lib/systemd/system/
 
 
@@ -35,20 +34,19 @@ station or a privately running jukebox and many things in between.
 It is very versatile in that new formats can be added relatively 
 easily and supports open standards for commuincation and interaction.
 
+%pre
+getent group icecast > /dev/null || groupadd -r icecast
+getent passwd icecast > /dev/null || useradd -r -g icecast -d /usr/share/icecast -s /sbin/nologin -c "icecast streaming server"
+exit 0
+
 %prep
-#rm -rf %{name}
-#git clone %{git_repo} %{name}
-#cd %{name}
-#git checkout icecast-%{ver}-%{sufix}
 %autosetup -n %{name}
 
 %build
-#cd %{name}
 CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%{_prefix} --sysconfdir=/etc
 make
 
 %install
-#cd %{name}
 rm -rf $RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/%{systemd_dest}
 
