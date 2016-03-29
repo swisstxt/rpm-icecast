@@ -36,7 +36,7 @@ easily and supports open standards for commuincation and interaction.
 
 %pre
 getent group icecast > /dev/null || groupadd -r icecast
-getent passwd icecast > /dev/null || useradd -r -g icecast -d /usr/share/icecast -s /sbin/nologin -c "icecast streaming server"
+getent passwd icecast > /dev/null || useradd -r -g icecast -d /usr/share/icecast -s /sbin/nologin -c "icecast streaming server" icecast
 exit 0
 
 %prep
