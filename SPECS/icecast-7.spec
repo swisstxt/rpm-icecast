@@ -14,7 +14,7 @@ Source0:	%{name}-%{ver}%{sufix}.tar.gz
 Source1:	icecast.service
 
 # This patch fixes range requests on m3u files - the upstream version never fills the file buffer
-Patch0:     icecast-http-range.patch
+Patch0:     0001-Fixed-empty-buffer-bug-when-an-HTTP-range-request-is.patch
 
 Requires:       libvorbis >= 1.0
 BuildRequires:	libvorbis-devel >= 1.0
@@ -43,8 +43,7 @@ getent passwd icecast > /dev/null || useradd -r -g icecast -d /usr/share/icecast
 exit 0
 
 %prep
-%patch0 -p0
-%autosetup -n %{name}
+%autosetup -S git -n %{name}
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%{_prefix} --sysconfdir=/etc
@@ -72,5 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 %{systemd_dest}/icecast.service
 
 %changelog
+* Mon May 23 2016 Gregor Riepl <gregor.riepl@swisstxt.ch>
+Added patch to fix empty HTTP range transfers
 * Thu Mar 10 2016 Sam Friedli <samuel.friedli@swisstxt.ch>
 Re-creation due to splitting of CentOS 6 and 7 version.
