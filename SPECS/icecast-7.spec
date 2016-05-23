@@ -13,6 +13,9 @@ BuildRoot:	%{_tmppath}/%{name}-root
 Source0:	%{name}-%{ver}%{sufix}.tar.gz
 Source1:	icecast.service
 
+# This patch fixes range requests on m3u files - the upstream version never fills the file buffer
+Patch0:     icecast-http-range.patch
+
 Requires:       libvorbis >= 1.0
 BuildRequires:	libvorbis-devel >= 1.0
 Requires:       libogg >= 1.0
@@ -40,6 +43,7 @@ getent passwd icecast > /dev/null || useradd -r -g icecast -d /usr/share/icecast
 exit 0
 
 %prep
+%patch0 -p1
 %autosetup -n %{name}
 
 %build
