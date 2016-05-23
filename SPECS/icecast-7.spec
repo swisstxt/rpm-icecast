@@ -43,7 +43,7 @@ getent passwd icecast > /dev/null || useradd -r -g icecast -d /usr/share/icecast
 exit 0
 
 %prep
-%patch0 -p1
+%patch0 -p0
 %autosetup -n %{name}
 
 %build
