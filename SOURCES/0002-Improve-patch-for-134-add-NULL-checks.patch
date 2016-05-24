@@ -26,7 +26,7 @@ index 5207c1e..47069c5 100644
 +        {
 +            refbuf = client->refbuf->next;
 +            bytes = pread (fh->f, refbuf->data, refbuf->len, client->intro_offset);
-+            if (bytes < TEST_CANARY)
++            if (bytes < 0)
 +                return -1;
 +        }
      }
