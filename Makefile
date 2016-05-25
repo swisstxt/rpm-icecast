@@ -1,14 +1,20 @@
 HOME=$(shell pwd)
 NAME=icecast
 VERSION=2.4.0
-SUFIX=kh3+git+e78da33b
+SUFIX=kh3git
+GITREPO=https://github.com/karlheyes/icecast-kh.git
+
+# For release versions
+#GITREV=icecast-${VERSION}-${SUFIX}
+#URL=https://github.com/karlheyes/icecast-kh/archive/${NAME}-${VERSION}-${SUFIX}.tar.gz
+
+# For development versions
+GITREV=e78da33b004917a17210a74e33f5c768880c7cb7
+URL=https://api.github.com/repos/karlheyes/icecast-kh/tarball/${GITREV}
+
 RELEASE=$(shell /opt/buildhelper/buildhelper getgitrev .)
 OS_RELEASE=$(shell /opt/buildhelper/buildhelper getosrelease)
 SPEC=$(shell /opt/buildhelper/buildhelper getspec ${NAME})
-# Release URL
-#URL=https://github.com/karlheyes/icecast-kh/archive/${NAME}-${VERSION}-${SUFIX}.tar.gz
-# Git URL
-URL=https://api.github.com/repos/karlheyes/icecast-kh/tarball/e78da33b004917a17210a74e33f5c768880c7cb7
 ARCHIVE=SOURCES/${NAME}-${VERSION}${SUFIX}.tar.gz
 
 all: build
@@ -26,6 +32,8 @@ build: $(ARCHIVE) clean
 	rpmbuild -ba ${SPEC} \
 	--define "ver ${VERSION}" \
 	--define "sufix ${SUFIX}" \
+	--define "git_repo ${GITREPO}" \
+	--define "git_rev ${GITREV}" \
 	--define "rel ${RELEASE}" \
 	--define "os_rel ${OS_RELEASE}" \
 	--define "_topdir %(pwd)/rpmbuild" \

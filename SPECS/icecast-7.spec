@@ -13,10 +13,6 @@ BuildRoot:	%{_tmppath}/%{name}-root
 Source0:	%{name}-%{ver}%{sufix}.tar.gz
 Source1:	icecast.service
 
-# This patch fixes range requests on m3u files - the upstream version never fills the file buffer
-Patch0:     0001-Fixed-empty-buffer-bug-when-an-HTTP-range-request-is.patch
-Patch1:     0002-Improve-patch-for-134-add-NULL-checks.patch
-
 Requires:       libvorbis >= 1.0
 BuildRequires:	libvorbis-devel >= 1.0
 Requires:       libogg >= 1.0

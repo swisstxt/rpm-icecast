@@ -21,8 +21,6 @@ BuildRequires:	libxml2-devel
 Requires:       libxslt
 BuildRequires:	libxslt-devel
 
-%define git_repo  https://github.com/karlheyes/icecast-kh.git
-
 
 %description
 Icecast is a streaming media server which currently supports Ogg Vorbis 
@@ -35,7 +33,7 @@ easily and supports open standards for commuincation and interaction.
 rm -rf %{name}
 git clone %{git_repo} %{name}
 cd %{name}
-git checkout icecast-%{ver}-%{sufix}
+git checkout %{git_rev}
 
 %build
 cd %{name}
