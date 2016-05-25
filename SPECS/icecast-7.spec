@@ -40,7 +40,7 @@ getent passwd icecast > /dev/null || useradd -r -g icecast -d /usr/share/icecast
 exit 0
 
 %prep
-%autosetup -S git -n %{name}
+%autosetup -S git -n %{src_folder}
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%{_prefix} --sysconfdir=/etc
@@ -68,6 +68,8 @@ rm -rf $RPM_BUILD_ROOT
 %{systemd_dest}/icecast.service
 
 %changelog
+* Wed May 25 2016 Gregor Riepl <gregor.riepl@swisstxt.ch>
+Changed to git version, already contains a fix for the range bug
 * Mon May 23 2016 Gregor Riepl <gregor.riepl@swisstxt.ch>
 Added patch to fix empty HTTP range transfers
 * Thu Mar 10 2016 Sam Friedli <samuel.friedli@swisstxt.ch>
