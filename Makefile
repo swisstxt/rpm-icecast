@@ -1,7 +1,7 @@
 HOME=$(shell pwd)
 NAME=icecast
 VERSION=2.4.0
-SUFIX=kh3-git-e78da33b
+SUFIX=kh3+git+e78da33b
 RELEASE=$(shell /opt/buildhelper/buildhelper getgitrev .)
 OS_RELEASE=$(shell /opt/buildhelper/buildhelper getosrelease)
 SPEC=$(shell /opt/buildhelper/buildhelper getspec ${NAME})
