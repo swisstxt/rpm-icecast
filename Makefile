@@ -33,7 +33,7 @@ build: $(ARCHIVE) clean
 	cp -r ./SOURCES/* ./rpmbuild/SOURCES/
 	rpmbuild -ba ${SPEC} \
 	--define "ver ${VERSION}" \
-	--define "suffix ${SUFFIX}" \
+	--define "ver_suffix ${SUFFIX}" \
 	--define "git_repo ${GITREPO}" \
 	--define "git_rev ${GITREV}" \
 	--define "src_folder ${SRCFOLDER}" \

@@ -1,5 +1,5 @@
 Name:		icecast
-Version:	%{ver}%{suffix}
+Version:	%{ver}%{ver_suffix}
 Release:	%{rel}%{?dist}
 Summary:	Xiph Streaming media server that supports multiple audio formats
 
@@ -10,7 +10,7 @@ Vendor:		Xiph.org Foundation <team@icecast.org>
 Prefix:		%{_prefix}
 BuildRoot:	%{_tmppath}/%{name}-root
 
-Source0:	%{name}-%{ver}%{suffix}.tar.gz
+Source0:	%{name}-%{ver}%{ver_suffix}.tar.gz
 Source1:	icecast.service
 
 Requires:       libvorbis >= 1.0

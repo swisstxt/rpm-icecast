@@ -1,5 +1,5 @@
 Name:		icecast
-Version:	%{ver}%{suffix}
+Version:	%{ver}%{ver_suffix}
 Release:	%{rel}%{?dist}
 Summary:	Xiph Streaming media server that supports multiple audio formats.
 
