@@ -7,7 +7,7 @@ GITREPO=https://github.com/karlheyes/icecast-kh.git
 # For release versions
 GITREV=icecast-${VERSION}-${SUFFIX}
 URL=https://github.com/karlheyes/icecast-kh/archive/${NAME}-${VERSION}-${SUFFIX}.tar.gz
-SRCFOLDER=icecast
+SRCFOLDER=icecast-kh-icecast-${VERSION}-${SUFFIX}
 
 # For development versions
 #GITREV=e78da33b004917a17210a74e33f5c768880c7cb7
