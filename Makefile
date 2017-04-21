@@ -1,18 +1,18 @@
 HOME=$(shell pwd)
 NAME=icecast
 VERSION=2.4.0
-SUFFIX=kh3git
+SUFFIX=kh4
 GITREPO=https://github.com/karlheyes/icecast-kh.git
 
 # For release versions
-#GITREV=icecast-${VERSION}-${SUFFIX}
-#URL=https://github.com/karlheyes/icecast-kh/archive/${NAME}-${VERSION}-${SUFFIX}.tar.gz
-#SRCFOLDER=icecast
+GITREV=icecast-${VERSION}-${SUFFIX}
+URL=https://github.com/karlheyes/icecast-kh/archive/${NAME}-${VERSION}-${SUFFIX}.tar.gz
+SRCFOLDER=icecast
 
 # For development versions
-GITREV=e78da33b004917a17210a74e33f5c768880c7cb7
-URL=https://api.github.com/repos/karlheyes/icecast-kh/tarball/${GITREV}
-SRCFOLDER=karlheyes-icecast-kh-e78da33
+#GITREV=e78da33b004917a17210a74e33f5c768880c7cb7
+#URL=https://api.github.com/repos/karlheyes/icecast-kh/tarball/${GITREV}
+#SRCFOLDER=karlheyes-icecast-kh-e78da33
 
 RELEASE=$(shell /opt/buildhelper/buildhelper getgitrev .)
 OS_RELEASE=$(shell /opt/buildhelper/buildhelper getosrelease)
