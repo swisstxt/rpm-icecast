@@ -1,7 +1,7 @@
 HOME=$(shell pwd)
-NAME=icecast-kh
+NAME=icecast
 VERSION=2.4.0
-SUFFIX=5
+SUFFIX=kh5
 GITREPO=https://github.com/karlheyes/icecast-kh.git
 
 # For release versions
