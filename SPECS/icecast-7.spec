@@ -1,7 +1,7 @@
 Name:		icecast
 Version:	%{ver}%{ver_suffix}
 Release:	%{rel}%{?dist}
-Summary:	Xiph Streaming media server that supports multiple audio formats
+Summary:	Xiph Streaming media server that supports multiple audio formats.
 
 Group:		Applications/Multimedia
 License:	GPL
@@ -10,33 +10,36 @@ Vendor:		Xiph.org Foundation <team@icecast.org>
 Prefix:		%{_prefix}
 BuildRoot:	%{_tmppath}/%{name}-root
 
-Source0:	%{name}-%{ver}%{ver_suffix}.tar.gz
+Source0:	%{name}-%{fork}-%{ver}-%{ver_suffix}.tar.gz
 Source1:	icecast.service
 
-Requires:       libvorbis >= 1.0
+Requires:	libvorbis >= 1.0
 BuildRequires:	libvorbis-devel >= 1.0
-Requires:       libogg >= 1.0
+Requires:	libogg >= 1.0
 BuildRequires:	libogg-devel >= 1.0
-Requires:       curl >= 7.10.0
+Requires:	curl >= 7.10.0
 BuildRequires:	curl-devel >= 7.10.0
-Requires:       libxml2
+Requires:	libxml2
 BuildRequires:	libxml2-devel
-Requires:       libxslt
+Requires:	libxslt
 BuildRequires:	libxslt-devel
+
+%define _rpmfilename %{name}-%{fork}-%{ver}-%{ver_suffix}.%{release}.%%{ARCH}.rpm
 
 %define systemd_dest /usr/lib/systemd/system/
 
 
 %description
-Icecast is a streaming media server which currently supports Ogg Vorbis 
-and MP3 audio streams. It can be used to create an Internet radio 
-station or a privately running jukebox and many things in between. 
-It is very versatile in that new formats can be added relatively 
+Icecast is a streaming media server which currently supports Ogg Vorbis
+and MP3 audio streams. It can be used to create an Internet radio
+station or a privately running jukebox and many things in between.
+It is very versatile in that new formats can be added relatively
 easily and supports open standards for commuincation and interaction.
 
 %pre
 getent group icecast > /dev/null || groupadd -r icecast
-getent passwd icecast > /dev/null || useradd -r -g icecast -d /usr/share/icecast -s /sbin/nologin -c "icecast streaming server" icecast
+getent passwd icecast > /dev/null || useradd -r -g icecast -d /usr/share/icecast -s /sbin/nologin -c "icecast streaming server"
+ icecast
 exit 0
 
 %prep
@@ -55,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT%{_datadir}/doc/%{name}
 
 %{__install} -p -m 0755 %{SOURCE1} $RPM_BUILD_ROOT/%{systemd_dest}/icecast.service
 
-%clean 
+%clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
@@ -68,9 +71,11 @@ rm -rf $RPM_BUILD_ROOT
 %{systemd_dest}/icecast.service
 
 %changelog
+* Wed Jul 05 2017 Sam Friedli <samuel.friedli@swisstxt.ch>
+Modified this to produce a better named rpm file
 * Wed May 25 2016 Gregor Riepl <gregor.riepl@swisstxt.ch>
 Changed to git version, already contains a fix for the range bug
 * Mon May 23 2016 Gregor Riepl <gregor.riepl@swisstxt.ch>
 Added patch to fix empty HTTP range transfers
 * Thu Mar 10 2016 Sam Friedli <samuel.friedli@swisstxt.ch>
-Re-creation due to splitting of CentOS 6 and 7 version.
+Re-creation due to splitting of CentOS 6 and 7 version
