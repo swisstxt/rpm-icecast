@@ -15,7 +15,7 @@ SRCFOLDER=icecast-kh-icecast-${VERSION}-${SUFFIX}
 #SRCFOLDER=karlheyes-icecast-kh-e78da33
 
 #RELEASE=$(shell /opt/buildhelper/buildhelper getgitrev .)
-RELEASE=51
+RELEASE=52
 OS_RELEASE=$(shell /opt/buildhelper/buildhelper getosrelease)
 SPEC=$(shell /opt/buildhelper/buildhelper getspec ${NAME})
 ARCHIVE=SOURCES/${NAME}-${VERSION}${SUFFIX}.tar.gz
