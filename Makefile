@@ -1,24 +1,19 @@
 HOME=$(shell pwd)
 NAME=icecast
+FORK=kh
 VERSION=2.4.0
-SUFFIX=kh5
-GITREPO=https://github.com/karlheyes/icecast-kh.git
+REL=9
+ARCH=$(shell /opt/buildhelper/buildhelper getarch)
+OS_RELEASE=$(shell /opt/buildhelper/buildhelper getosrelease)
+#GITREPO=https://github.com/karlheyes/icecast-kh.git
 
-# For release versions
-GITREV=icecast-${VERSION}-${SUFFIX}
-URL=https://github.com/karlheyes/icecast-kh/archive/${NAME}-${VERSION}-${SUFFIX}.tar.gz
+# Shitty nameing here....
+#GITREV=icecast-${VERSION}-${SUFFIX}
+URL=https://github.com/karlheyes/icecast-kh/archive/${NAME}-${VERSION}-${FORK}${REL}.tar.gz
 SRCFOLDER=icecast-kh-icecast-${VERSION}-${SUFFIX}
 
-# For development versions
-#GITREV=e78da33b004917a17210a74e33f5c768880c7cb7
-#URL=https://api.github.com/repos/karlheyes/icecast-kh/tarball/${GITREV}
-#SRCFOLDER=karlheyes-icecast-kh-e78da33
-
-#RELEASE=$(shell /opt/buildhelper/buildhelper getgitrev .)
-RELEASE=52
-OS_RELEASE=$(shell /opt/buildhelper/buildhelper getosrelease)
-SPEC=$(shell /opt/buildhelper/buildhelper getspec ${NAME})
-ARCHIVE=SOURCES/${NAME}-${VERSION}${SUFFIX}.tar.gz
+SPEC=$(shell /opt/buildhelper/buildhelper getspec ${NAME}-${FORK})
+ARCHIVE=SOURCES/${NAME}-${FORK}-${VERSION}-${REL}.tar.gz
 
 all: build
 
@@ -27,24 +22,24 @@ clean:
 	mkdir -p ./rpmbuild/SPECS/ ./rpmbuild/SOURCES/
 
 $(ARCHIVE):
-	echo "Skipping download...workaround!"
-	#curl -L -s -o "${ARCHIVE}" "${URL}"
+	echo "Downloadig ${URL} to ${ARCHIVE}"
+	wget -q -O "${ARCHIVE}" "${URL}"
 
 build: $(ARCHIVE) clean
 	cp -r ./SPECS/* ./rpmbuild/SPECS/
 	cp -r ./SOURCES/* ./rpmbuild/SOURCES/
-	rpmbuild -ba ${SPEC} \
+	rpmbuild -v -bb ${SPEC} \
 	--define "ver ${VERSION}" \
-	--define "ver_suffix ${SUFFIX}" \
-	--define "git_repo ${GITREPO}" \
-	--define "git_rev ${GITREV}" \
-	--define "src_folder ${SRCFOLDER}" \
-	--define "rel ${RELEASE}" \
+	--define "fork ${FORK}" \
+	--define "rel ${REL}" \
 	--define "os_rel ${OS_RELEASE}" \
+	--define "arch ${ARCH}" \
 	--define "_topdir %(pwd)/rpmbuild" \
 	--define "_builddir %{_topdir}" \
 	--define "_rpmdir %{_topdir}" \
 	--define "_srcrpmdir %{_topdir}" \
+	--define "debug_package %{nil}"
 
 publish:
 	/opt/buildhelper/buildhelper pushrpm yum-01.stxt.media.int:8080/swisstxt-centos
+
