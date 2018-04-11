@@ -19,13 +19,14 @@ all: build
 
 clean:
 	rm -rf ./rpmbuild
-	mkdir -p ./rpmbuild/SPECS/ ./rpmbuild/SOURCES/
+	rm -f SOURCES/icecast-kh*
 
 $(ARCHIVE):
-	echo "Downloadig ${URL} to ${ARCHIVE}"
-	wget -q -O "${ARCHIVE}" "${URL}"
+	WGETRC=/dev/null
+	wget -q --hsts-file /dev/null  -O "${ARCHIVE}" "${URL}"
 
-build: $(ARCHIVE) clean
+build: clean $(ARCHIVE)
+	mkdir -p ./rpmbuild/SPECS/ ./rpmbuild/SOURCES/
 	cp -r ./SPECS/* ./rpmbuild/SPECS/
 	cp -r ./SOURCES/* ./rpmbuild/SOURCES/
 	rpmbuild -v -bb ${SPEC} \
