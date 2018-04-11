@@ -23,7 +23,7 @@ clean:
 
 $(ARCHIVE):
 	WGETRC=/dev/null
-	wget -q --hsts-file /dev/null  -O "${ARCHIVE}" "${URL}"
+	wget -q -O "${ARCHIVE}" "${URL}"
 
 build: clean $(ARCHIVE)
 	mkdir -p ./rpmbuild/SPECS/ ./rpmbuild/SOURCES/
