@@ -42,7 +42,7 @@ exit 0
 %autosetup -v -n %{name}-icecast-%{ver}-%{fork}%{rel}
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%{_prefix} --sysconfdir=/etc
+CFLAGS="$RPM_OPT_FLAGS" ./configure --prefix=%{_prefix} --sysconfdir=/etc --with-openssl
 make
 
 %install
