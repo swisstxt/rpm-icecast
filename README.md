@@ -10,6 +10,6 @@ Usage:
 	# Example to Build icecast-2.4.0kh9
 	# The resulting rpm will be icecast-kh-2.4.0-9.rpm
 	make clean
-    make VERSION=2.4.0 REL=9
+    make VERSION=2.4.0 REL=12
 	# Publish it to swisstxt-centos${centos_version}
 	make publish
