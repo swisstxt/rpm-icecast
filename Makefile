@@ -39,8 +39,8 @@ build: clean $(ARCHIVE)
 	cp -r ./SOURCES/* ./rpmbuild/SOURCES/
 	rpmbuild -v -bb ${SPEC} \
 	--define "ver ${VERSION}" \
-#	--define "fork ${FORK}" \
-#	--define "rel ${REL}" \
+	#--define "fork ${FORK}" \
+	#--define "rel ${REL}" \
 	--define "os_rel ${OS_RELEASE}" \
 	--define "arch ${ARCH}" \
 	--define "_topdir %(pwd)/rpmbuild" \
