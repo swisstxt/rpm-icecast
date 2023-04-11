@@ -16,7 +16,7 @@ OS_RELEASE=$(shell /opt/buildhelper/buildhelper getosrelease)
 #SRCFOLDER=icecast-kh-icecast-${VERSION}-${SUFFIX}
 
 #Download original version (not fork)
-URL=https://downloads.xiph.org/releases/icecast/${NAME}.${VERSION}.tar.gz
+URL=https://ftp.osuosl.org/pub/xiph/releases/icecast/${NAME}.${VERSION}.tar.gz
 SRCFOLDER=icecast.${VERSION}.${SUFFIX}
 
 SPEC=$(shell /opt/buildhelper/buildhelper getspec ${NAME})
