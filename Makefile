@@ -1,19 +1,27 @@
 HOME=$(shell pwd)
 NAME=icecast
-FORK=kh
-VERSION=2.4.0
-REL=20
+#FORK=kh
+#VERSION=2.4.0
+#REL=20
+VERSION=2.4.4
+
 ARCH=$(shell /opt/buildhelper/buildhelper getarch)
 OS_RELEASE=$(shell /opt/buildhelper/buildhelper getosrelease)
 #GITREPO=https://github.com/karlheyes/icecast-kh.git
 
 # Shitty nameing here....
 #GITREV=icecast-${VERSION}-${SUFFIX}
-URL=https://github.com/karlheyes/icecast-kh/archive/${NAME}-${VERSION}-${FORK}${REL}.tar.gz
-SRCFOLDER=icecast-kh-icecast-${VERSION}-${SUFFIX}
 
-SPEC=$(shell /opt/buildhelper/buildhelper getspec ${NAME}-${FORK})
-ARCHIVE=SOURCES/${NAME}-${FORK}-${VERSION}-${REL}.tar.gz
+#URL=https://github.com/karlheyes/icecast-kh/archive/${NAME}-${VERSION}-${FORK}${REL}.tar.gz
+#SRCFOLDER=icecast-kh-icecast-${VERSION}-${SUFFIX}
+
+#Download original version (not fork)
+URL=https://downloads.xiph.org/releases/icecast/${NAME}.${VERSION}.tar.gz
+SRCFOLDER=icecast.${VERSION}.${SUFFIX}
+
+SPEC=$(shell /opt/buildhelper/buildhelper getspec ${NAME})
+
+#ARCHIVE=SOURCES/${NAME}-${FORK}-${VERSION}-${REL}.tar.gz
 
 all: build
 
@@ -31,8 +39,8 @@ build: clean $(ARCHIVE)
 	cp -r ./SOURCES/* ./rpmbuild/SOURCES/
 	rpmbuild -v -bb ${SPEC} \
 	--define "ver ${VERSION}" \
-	--define "fork ${FORK}" \
-	--define "rel ${REL}" \
+#	--define "fork ${FORK}" \
+#	--define "rel ${REL}" \
 	--define "os_rel ${OS_RELEASE}" \
 	--define "arch ${ARCH}" \
 	--define "_topdir %(pwd)/rpmbuild" \
