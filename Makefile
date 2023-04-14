@@ -10,7 +10,7 @@ OS_RELEASE=$(shell /opt/buildhelper/buildhelper getosrelease)
 URL=https://ftp.osuosl.org/pub/xiph/releases/icecast/${NAME}-${VERSION}.tar.gz
 SRCFOLDER=icecast-${VERSION}-${SUFFIX}
 
-SPEC=$(shell /opt/buildhelper/buildhelper getspec ${NAME}-${FORK})
+SPEC=$(shell /opt/buildhelper/buildhelper getspec ${NAME}-${VERSION})
 ARCHIVE=SOURCES/${NAME}-${VERSION}.tar.gz
 
 all: build
